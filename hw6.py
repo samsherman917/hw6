@@ -2,13 +2,29 @@ import re
 import unittest
 
 def sumNums(fileName):
-    pass
+    file = open(fileName, 'r')
+    file = file.read()
+    x = re.findall("(?<!\d|-)\d+(?!\d|-)", file)
+    x = list(map(int, x))
+    sum = 0
+    for n in x:
+        sum = sum + n
 
+    return sum
+ 
 def countWord(fileName, word):
-    pass
+    file = open(fileName, 'r')
+    file = file.read()
+    words = re.findall('(?i)' + str(word) + '(?!\w+)', file)
+
+    return len(words)
 
 def listURLs(fileName):
-    pass
+    file = open(fileName, 'r')
+    file = file.read()
+    urls = re.findall("\S+\.{1}\S+\.{1}\w+", file)
+
+    return urls
 
 
 class TestHW6(unittest.TestCase):
